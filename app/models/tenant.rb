@@ -9,6 +9,9 @@
 #  updated_at :datetime         not null
 #
 class Tenant < ApplicationRecord
+  validates :name, presence: true
+  validates :api_key, presence: true
+
   before_create :generate_api_key
 
   private
