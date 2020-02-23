@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "active_model_serializers"
 gem "coffee-rails"
 gem "jquery-rails"
 gem "rails", "5.2.3"
