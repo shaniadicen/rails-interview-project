@@ -1,4 +1,4 @@
-class Question < ActiveRecord::Base
+class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   belongs_to :user
 end

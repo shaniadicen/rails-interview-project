@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :questions, dependent: :destroy, inverse_of: :asker
   has_many :answers, dependent: :destroy, inverse_of: :answerer
 end
