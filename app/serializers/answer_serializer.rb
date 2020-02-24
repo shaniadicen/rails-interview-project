@@ -13,5 +13,5 @@ class AnswerSerializer < ActiveModel::Serializer
   belongs_to :user, serializer: UserSerializer
   belongs_to :question, serializer: QuestionSerializer
 
-  attributes :id, :body, :created_at, :updated_at, :user
+  attributes :id, :body, :user
 end

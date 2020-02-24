@@ -13,5 +13,5 @@ class QuestionSerializer < ActiveModel::Serializer
   belongs_to :user, serializer: UserSerializer
   has_many :answers
 
-  attributes :id, :title, :private, :created_at, :updated_at
+  attributes :id, :title, :private
 end

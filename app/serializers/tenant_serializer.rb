@@ -9,5 +9,5 @@
 #  updated_at :datetime         not null
 #
 class TenantSerializer < ActiveModel::Serializer
-  attributes :id, :name, :api_key, :created_at, :updated_at
+  attributes :id, :name, :api_key
 end
