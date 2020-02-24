@@ -1,11 +1,15 @@
 # MedCheck Rails
+
 Note: I updated the project to use ruby 2.6.4 and rails 5.2.3 since I encountered problems during setup.
 
-Questions list is routed in `api/v1/questions#index`.
-Specific questions is routed in `api/v1/questions#show`.
+List of questions are routed in `api/v1/questions#index`.
+Specific questions are routed in `api/v1/questions#show`.
+
 To make a request to the API:
 
-
+```
+curl --get "http://localhost:3000/api/v1/questions?api_key=260cb649227332c6d0810cffe2715a50"
+```
 
 # (Forked from Kaleo)
 # Rails Engineer Candidate Interview Project
