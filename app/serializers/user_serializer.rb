@@ -7,10 +7,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require 'test_helper'
-
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :name
 end

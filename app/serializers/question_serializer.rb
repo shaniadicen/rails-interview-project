@@ -9,12 +9,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Question < ApplicationRecord
-  has_many :answers, dependent: :destroy
-  belongs_to :user
+class QuestionSerializer < ActiveModel::Serializer
+  belongs_to :user, serializer: UserSerializer
+  has_many :answers
 
-  validates :title, presence: true
-  validates :private, inclusion: { in: [true, false] }
-
-  scope :public_questions, -> { where(private: false) }
+  attributes :id, :title, :private
 end

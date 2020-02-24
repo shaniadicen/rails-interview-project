@@ -9,10 +9,9 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-require 'test_helper'
+class AnswerSerializer < ActiveModel::Serializer
+  belongs_to :user, serializer: UserSerializer
+  belongs_to :question, serializer: QuestionSerializer
 
-class AnswerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  attributes :id, :body, :user
 end

@@ -9,12 +9,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Question < ApplicationRecord
-  has_many :answers, dependent: :destroy
-  belongs_to :user
-
-  validates :title, presence: true
-  validates :private, inclusion: { in: [true, false] }
-
-  scope :public_questions, -> { where(private: false) }
+FactoryBot.define do
+  factory :question do
+    title { FFaker::HipsterIpsum.sentence.gsub(/\.$/, "?") }
+    user { User.first || association(:user) }
+  end
 end
