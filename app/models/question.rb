@@ -14,7 +14,7 @@ class Question < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
-  validates :private, presence: true
+  validates :private, inclusion: { in: [true, false] }
 
   scope :public_questions, -> { where("private = 'f'") }
 end

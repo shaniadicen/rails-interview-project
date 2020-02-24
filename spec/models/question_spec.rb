@@ -16,7 +16,6 @@ describe Question, type: :model do
     subject { build(:question) }
 
     it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:private) }
   end
 
   describe "associations" do
