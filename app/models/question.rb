@@ -16,5 +16,5 @@ class Question < ApplicationRecord
   validates :title, presence: true
   validates :private, inclusion: { in: [true, false] }
 
-  scope :public_questions, -> { where("private = 'f'") }
+  scope :public_questions, -> { where(private: false) }
 end
