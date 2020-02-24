@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
 
     render json: { errors: ["Invalid API Key"] }, status: :unauthorized if @tenant.nil?
   end
+
+  def increment_api_count
+    @tenant.update(api_count: @tenant.api_count + 1)
+  end
 end
