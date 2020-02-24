@@ -6,9 +6,7 @@ describe Question, type: :request do
     public_question = create(:question, private: false)
     create(:answer, question: public_question)
 
-    get api_v1_questions_url, params: {
-      api_key: tenant.api_key
-    }
+    get api_v1_questions_url, params: { api_key: tenant.api_key }
 
     expect(response).to have_http_status(:success)
     expect(json.size).to eq(1)
@@ -19,9 +17,7 @@ describe Question, type: :request do
     tenant = create(:tenant)
     create(:question, private: true)
 
-    get api_v1_questions_url, params: {
-      api_key: tenant.api_key
-    }
+    get api_v1_questions_url, params: { api_key: tenant.api_key }
 
     expect(response).to have_http_status(:success)
     expect(json.size).to eq(0)
@@ -32,20 +28,27 @@ describe Question, type: :request do
     public_question = create(:question, private: false)
     create(:answer, question: public_question)
 
-    get api_v1_question_url(public_question), params: {
-      api_key: tenant.api_key
-    }
+    get api_v1_question_url(public_question), params: { api_key: tenant.api_key }
 
     expect(response).to have_http_status(:success)
     expect(json.keys).to contain_exactly(:answers, :id, :private, :title, :user)
   end
 
   it "does not authorize users with invalid or nil api key" do
-    get api_v1_questions_url, params: {
-      api_key: nil
-    }
+    get api_v1_questions_url, params: { api_key: nil }
 
     expect(response).to have_http_status(:unauthorized)
     expect(json[:errors].present?).to eq(true)
+  end
+
+  it "increments tenant's api_count for every request" do
+    tenant = create(:tenant)
+    initial_count = tenant.api_count
+
+    get api_v1_questions_url, params: { api_key: tenant.api_key }
+    tenant.reload
+
+    expect(response).to have_http_status(:success)
+    expect(tenant.api_count).to eq(initial_count + 1)
   end
 end
