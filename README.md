@@ -1,4 +1,13 @@
-# (Forked from Kaleo) 
+# MedCheck Rails
+Note: I updated the project to use ruby 2.6.4 and rails 5.2.3 since I encountered problems during setup.
+
+Questions list is routed in `api/v1/questions#index`.
+Specific questions is routed in `api/v1/questions#show`.
+To make a request to the API:
+
+
+
+# (Forked from Kaleo)
 # Rails Engineer Candidate Interview Project
 
 Thanks for taking the time to complete this exercise. We're excited that you're considering joining our amazing team.
