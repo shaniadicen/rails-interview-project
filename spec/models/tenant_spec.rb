@@ -19,8 +19,7 @@ describe Tenant, type: :model do
 
   describe "callbacks" do
     it "generates api_key" do
-      tenant = build(:tenant)
-      tenant.save
+      tenant = create(:tenant)
 
       expect(tenant.api_key.blank?).to eq(false)
     end
